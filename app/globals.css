@@ -1,26 +1,243 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+
+@theme {
+  --color-cream: #f0e8d5;
+  --color-wood: #b89567;
+  --color-wood-dark: #8b6b3d;
+  --color-forest: #3d4a3e;
+  --color-ink: #28231a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Keyframes ──────────────────────────────────────────────────────────── */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes riseIntoView {
+  from {
+    transform: translateY(108%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 
+@keyframes lineGrowCenter {
+  from {
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: center;
+  }
+}
+
+@keyframes lightDrift {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  20% {
+    transform: translate(4%, -3%);
+  }
+  45% {
+    transform: translate(6%, 4%);
+  }
+  70% {
+    transform: translate(-3%, 3%);
+  }
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-120%) skewX(-10deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(260%) skewX(-10deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ringRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grainBreath {
+  0%,
+  100% {
+    opacity: 0.045;
+  }
+  50% {
+    opacity: 0.09;
+  }
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #f0e8d5;
+  color: #28231a;
+}
+
+/* ─── Decoration layers ──────────────────────────────────────────────────── */
+
+/* Ambient light blobs */
+.fo-blob-warm {
+  position: absolute;
+  width: 160%;
+  height: 160%;
+  top: -30%;
+  left: -30%;
+  will-change: transform;
+  background: radial-gradient(
+    ellipse 52% 44% at 52% 46%,
+    rgba(255, 244, 200, 0.5) 0%,
+    rgba(248, 236, 185, 0.24) 38%,
+    transparent 68%
+  );
+  animation: lightDrift 32s ease-in-out infinite;
+}
+
+.fo-blob-cool {
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  top: -15%;
+  left: -15%;
+  will-change: transform;
+  background: radial-gradient(
+    ellipse 38% 32% at 28% 68%,
+    rgba(195, 215, 175, 0.14) 0%,
+    transparent 58%
+  );
+  animation: lightDrift 48s ease-in-out infinite reverse;
+}
+
+/* Horizontal plank grain bands */
+.fo-plank-bands {
+  background: linear-gradient(
+    180deg,
+    rgba(170, 130, 75, 0.04) 0%,
+    transparent 20%,
+    rgba(170, 130, 75, 0.032) 42%,
+    transparent 60%,
+    rgba(170, 130, 75, 0.038) 80%,
+    transparent 100%
+  );
+}
+
+/* Wood cross-section ring SVG */
+.fo-rings {
+  position: absolute;
+  width: 60vmin;
+  height: 60vmin;
+  top: -16vmin;
+  right: -14vmin;
+  animation: ringRotate 110s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* Grain texture */
+.fo-grain {
+  animation: grainBreath 12s ease-in-out infinite;
+}
+
+/* Shimmer overlay inside brand mark container */
+.fo-shimmer {
+  background: linear-gradient(
+    100deg,
+    transparent 25%,
+    rgba(255, 252, 240, 0.22) 50%,
+    transparent 75%
+  );
+  animation: shimmerSweep 1.6s ease-out 1.9s both;
+}
+
+/* ─── Content animation classes ──────────────────────────────────────────── */
+
+.fo-brand {
+  animation: riseIntoView 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+.fo-rule {
+  animation: lineGrowCenter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+.fo-text {
+  animation: riseIntoView 1s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
+}
+.fo-label {
+  animation: riseIntoView 1s cubic-bezier(0.16, 1, 0.3, 1) 1.28s both;
+}
+.fo-footer {
+  animation: riseIntoView 1s cubic-bezier(0.16, 1, 0.3, 1) 1.55s both;
+}
+
+/* ─── Kontakt hover underline ────────────────────────────────────────────── */
+
+.kontakt-link {
+  position: relative;
+  color: #3d4a3e;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.kontakt-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #3d4a3e;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kontakt-link:hover {
+  opacity: 0.7;
+}
+.kontakt-link:hover::after,
+.kontakt-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.kontakt-link:focus-visible {
+  outline: 2px solid #3d4a3e;
+  outline-offset: 5px;
+  border-radius: 1px;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
