@@ -2,12 +2,12 @@ import SceneDecoration from "./SceneDecoration";
 
 export default function ComingSoonHero() {
   return (
-    <main className="relative h-screen overflow-hidden bg-cream">
-      {/* ── Background decoration ───────────────────────────────────────────── */}
+    <main className="relative min-h-svh flex flex-col bg-cream">
+      {/* ── Background decoration (absolute, растягивается вместе с main) ────── */}
       <SceneDecoration />
 
       {/* ── Content ────────────────────────────────────────────────────────── */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-8">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-8 py-16">
         {/* Brand mark — rises through overflow mask, then shimmer sweeps once */}
         <div className="relative">
           <h1 className="fo-brand font-display text-[clamp(3.8rem,9vw,9rem)] font-normal italic tracking-[0.04em] text-ink leading-[1.05]">
@@ -39,22 +39,25 @@ export default function ComingSoonHero() {
         </div>
       </div>
 
-      {/* ── Kontakt — bottom right ─────────────────────────────────────────── */}
-      <div className="absolute right-0 bottom-0 z-10 overflow-hidden p-edge">
-        <a
-          href="mailto:kontakt@fo-rested.pl"
-          className="kontakt-link fo-footer font-body inline-block text-md font-light tracking-[0.22em] uppercase"
-        >
-          Kontakt
-        </a>
-      </div>
+      {/* ── Footer row ─────────────── */}
+      <div className="relative z-10 flex justify-between items-end p-edge lg:sticky lg:bottom-0">
+        {/* Year — left */}
+        <div className="overflow-hidden">
+          <span className="fo-footer font-body inline-block text-[0.5rem] lg:text-xs font-light tracking-[0.18em] uppercase text-wood">
+            © 2026 fo-rested
+            <div>· dev by Niezdem · </div>
+          </span>
+        </div>
 
-      {/* ── Year — bottom left ─────────────────────────────────────────────── */}
-      <div className="absolute left-0 bottom-0 z-10 overflow-hidden p-edge">
-        <span className="fo-footer font-body inline-block text-[0.5rem] lg:text-xs font-light tracking-[0.18em] uppercase text-wood">
-          © 2026 fo-rested
-          <div>· dev by Niezdem · </div>
-        </span>
+        {/* Kontakt — right */}
+        <div className="overflow-hidden">
+          <a
+            href="mailto:kontakt@fo-rested.pl"
+            className="kontakt-link fo-footer font-body inline-block text-md font-light tracking-[0.22em] uppercase"
+          >
+            Kontakt
+          </a>
+        </div>
       </div>
     </main>
   );
