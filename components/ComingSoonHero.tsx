@@ -11,7 +11,7 @@ export default function ComingSoonHero() {
         {/* Brand mark — rises through overflow mask, then shimmer sweeps once */}
         <div className="relative">
           <h1 className="fo-brand font-display text-[clamp(3.8rem,9vw,9rem)] font-normal italic tracking-[0.04em] text-ink leading-[1.05]">
-            Fo-Rested
+            forested
           </h1>
           <div
             aria-hidden="true"

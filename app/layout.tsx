@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat, Pacifico } from "next/font/google";
+import { Cormorant, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const display = Pacifico({
+const display = Cormorant({
   subsets: ["latin"],
-  weight: "400",
+  weight: "600",
   style: "normal",
   variable: "--font-display",
   display: "swap",
