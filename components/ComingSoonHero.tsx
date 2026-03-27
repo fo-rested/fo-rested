@@ -1,6 +1,9 @@
-import SceneDecoration from "./SceneDecoration";
+import { useTranslations } from "next-intl";
+import { SceneDecoration } from "./SceneDecoration";
 
-export default function ComingSoonHero() {
+export function ComingSoonHero() {
+  const t = useTranslations("comingSoon");
+
   return (
     <main className="relative h-screen overflow-hidden bg-cream">
       {/* ── Background decoration ───────────────────────────────────────────── */}
@@ -24,17 +27,15 @@ export default function ComingSoonHero() {
 
         {/* Main supporting text */}
         <div className="overflow-hidden">
-          <p className="fo-text font-body text-base lg:text-3xl font-light tracking-[0.025em] leading-[1.9] text-ink max-w-[33ch] text-center">
-            Strona w budowie. Wkrótce pokażemy,
-            <br />
-            jak drewno staje się produktem.
+          <p className="fo-text font-body text-base lg:text-3xl font-light tracking-[0.025em] leading-[1.9] text-ink max-w-[33ch] text-center whitespace-pre-line">
+            {t("tagline")}
           </p>
         </div>
 
         {/* Secondary descriptor */}
         <div className="overflow-hidden mt-7">
           <p className="fo-label font-body text-xs lg:text-base tracking-[0.28em] uppercase text-wood-dark">
-            Suszenie, obróbka, produkcja
+            {t("descriptor")}
           </p>
         </div>
       </div>
@@ -45,7 +46,7 @@ export default function ComingSoonHero() {
           href="mailto:kontakt@fo-rested.pl"
           className="kontakt-link fo-footer font-body inline-block text-md font-light tracking-[0.22em] uppercase"
         >
-          Kontakt
+          {t("contact")}
         </a>
       </div>
 

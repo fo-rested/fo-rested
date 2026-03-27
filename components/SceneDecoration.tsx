@@ -11,7 +11,7 @@ const PHYLLO_DOTS = Array.from({ length: 300 }, (_, i) => ({
   opacity: parseFloat((0.01 + (i % 13) * 0.005).toFixed(3)),
 }));
 
-export default function SceneDecoration() {
+export function SceneDecoration() {
   return (
     <>
       {/* Ambient light blobs */}
