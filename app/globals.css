@@ -7,11 +7,7 @@
 }
 
 @utility font-body {
-  font-family: var(--font-main);
-}
-
-@utility p-edge {
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  font-family: var(--font-body);
 }
 
 /* ─── Design Tokens ──────────────────────────────────────────────────────── */
@@ -102,17 +98,15 @@
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 
-html,
-body {
-  height: 100%;
-  overflow: hidden;
+html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: #f0e8d5;
-  color: #28231a;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  overflow-x: clip;
 }
 
 /* ─── Decoration layers ──────────────────────────────────────────────────── */
@@ -207,7 +201,7 @@ body {
 
 .kontakt-link {
   position: relative;
-  color: #3d4a3e;
+  color: var(--color-forest);
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -219,7 +213,7 @@ body {
   left: 0;
   width: 100%;
   height: 1px;
-  background-color: #3d4a3e;
+  background-color: var(--color-forest);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -234,7 +228,7 @@ body {
 }
 
 .kontakt-link:focus-visible {
-  outline: 2px solid #3d4a3e;
+  outline: 2px solid var(--color-forest);
   outline-offset: 5px;
   border-radius: 1px;
 }

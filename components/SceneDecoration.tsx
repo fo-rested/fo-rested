@@ -13,27 +13,19 @@ const PHYLLO_DOTS = Array.from({ length: 300 }, (_, i) => ({
 
 export function SceneDecoration() {
   return (
-    <>
+    <div
+      aria-hidden="true"
+      className="fixed inset-0 z-0 pointer-events-none"
+    >
       {/* Ambient light blobs */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
-      >
-        <div className="fo-blob-warm" />
-        <div className="fo-blob-cool" />
-      </div>
+      <div className="fo-blob-warm" />
+      <div className="fo-blob-cool" />
 
       {/* Plank tone bands */}
-      <div
-        aria-hidden="true"
-        className="fo-plank-bands absolute inset-0 z-0 pointer-events-none"
-      />
+      <div className="fo-plank-bands absolute inset-0" />
 
       {/* Phyllotaxis pattern — golden angle spiral, centered */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none"
-      >
+      <div className="absolute inset-0 flex items-center justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 500 500"
@@ -53,10 +45,7 @@ export function SceneDecoration() {
       </div>
 
       {/* Film grain */}
-      <div
-        aria-hidden="true"
-        className="fo-grain absolute inset-0 z-0 pointer-events-none"
-      >
+      <div className="fo-grain absolute inset-0">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
           <defs>
             <filter id="fo-grain" x="0%" y="0%" width="100%" height="100%">
@@ -77,6 +66,6 @@ export function SceneDecoration() {
           />
         </svg>
       </div>
-    </>
+    </div>
   );
 }

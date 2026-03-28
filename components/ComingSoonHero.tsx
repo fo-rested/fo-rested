@@ -5,15 +5,15 @@ export function ComingSoonHero() {
   const t = useTranslations("comingSoon");
 
   return (
-    <main className="relative h-screen overflow-hidden bg-cream">
-      {/* ── Background decoration ───────────────────────────────────────────── */}
+    <main className="relative flex min-h-screen flex-col bg-cream">
+      {/* ── Background decoration (fixed, covers viewport always) ───────────── */}
       <SceneDecoration />
 
       {/* ── Content ────────────────────────────────────────────────────────── */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-8">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-8 py-20">
         {/* Brand mark — rises through overflow mask, then shimmer sweeps once */}
-        <div className="relative">
-          <h1 className="fo-brand font-display text-[clamp(3.8rem,9vw,9rem)] font-normal italic tracking-[0.04em] text-ink leading-[1.05]">
+        <div className="relative overflow-hidden">
+          <h1 className="fo-brand font-display px-8 text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-normal italic tracking-[0.04em] text-ink leading-[1.05]">
             forested
           </h1>
           <div
@@ -40,22 +40,18 @@ export function ComingSoonHero() {
         </div>
       </div>
 
-      {/* ── Kontakt — bottom right ─────────────────────────────────────────── */}
-      <div className="absolute right-0 bottom-0 z-10 overflow-hidden p-edge">
+      {/* ── Footer row ─────────────────────────────────────────────────────── */}
+      <div className="relative z-10 flex items-end justify-between p-6 md:p-8 xl:p-10">
+        <span className="fo-footer font-body text-[0.5rem] lg:text-xs font-light tracking-[0.18em] uppercase text-wood">
+          © 2026 fo-rested
+          <br />· dev by Niezdem ·
+        </span>
         <a
           href="mailto:kontakt@fo-rested.pl"
-          className="kontakt-link fo-footer font-body inline-block text-md font-light tracking-[0.22em] uppercase"
+          className="kontakt-link fo-footer font-body text-base font-light tracking-[0.22em] uppercase"
         >
           {t("contact")}
         </a>
-      </div>
-
-      {/* ── Year — bottom left ─────────────────────────────────────────────── */}
-      <div className="absolute left-0 bottom-0 z-10 overflow-hidden p-edge">
-        <span className="fo-footer font-body inline-block text-[0.5rem] lg:text-xs font-light tracking-[0.18em] uppercase text-wood">
-          © 2026 fo-rested
-          <div>· dev by Niezdem · </div>
-        </span>
       </div>
     </main>
   );
